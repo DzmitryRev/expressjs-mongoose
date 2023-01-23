@@ -26,7 +26,7 @@ class UserService {
     }
     await UserModel.updateOne(
       { email },
-      { $set: { lastVisitDate: new Date().toLocaleDateString() } },
+      { $set: { lastVisitDate: new Date().toLocaleString('en-US') } },
     );
     await hashService.compareHash(user.password, password);
     const userDto = new UserDto({ name: user.name, email: user.email, id: user._id.toString() });
